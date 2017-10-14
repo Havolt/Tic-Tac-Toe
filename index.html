@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe 2</title>
+    <style>
+
+    html, body {
+      background: linear-gradient(#360B0B, darkred);
+      min-height: 100%;
+      font-family:arial;
+    }
+    #main{
+      width:800px;;
+      height: 750px;
+      background-color: #781717;
+      margin:auto;
+      border-radius: 10px;
+      border: #177878 solid 2px;
+      min-width: 750px;
+    }
+    #header{
+    font-size: 5em;
+    text-shadow: 0 0 11px #F7F7F7;
+    color: #F7F7F7;
+    text-align:center;
+    padding-top: 25px;
+    padding-bottom:0;
+    margin-bottom: 0;
+    }
+    #nineByNine{
+      position:relative;
+      min-width: 800px;
+    }
+    .boxy{
+      background-color: #F7F7F7;
+      height: 160px;
+      width: 160px;
+      border: black solid 4px;
+      float:left;
+      position:absolute;
+      left: 150px;
+      top: 60px;
+    }
+    .boxy:hover{
+      position:absolute;
+      background-color:lightblue;
+      top: -4px;
+      left: -4px;
+      width:172px;
+      height:172px;
+      z-index: 2;
+      cursor:pointer;
+    }
+    #B1A{
+
+    }
+    #B1A:hover{
+      top: 54px;
+      left: 144px;
+
+    }
+    #B1B{
+      left:310px;
+    }
+    #B1B:hover{
+      top: 54px;
+      left: 304px;
+    }
+    #B1C{
+      left:470px;
+    }
+    #B1C:hover{
+      top: 54px;
+      left: 464px;
+    }
+    #B2A{
+      top:225px;
+    }
+    #B2A:hover{
+      top: 219px;
+      left: 144px;
+    }
+    #B2B{
+      top:225px;
+      left:310px;
+    }
+    #B2B:hover{
+      top: 219px;
+      left: 304px;
+    }
+    #B2C{
+      left:470px;
+      top:225px;
+    }
+    #B2C:hover{
+      top: 219px;
+      left: 466px;
+    }
+    #B3A{
+      top: 391px;
+    }
+    #B3A:hover{
+      top: 386px;
+      left: 144px;
+    }
+    #B3B{
+      top:391px;
+      left:310px;
+    }
+    #B3B:hover{
+      top: 386px;
+      left: 304px;
+    }
+    #B3C{
+      top:391px;
+      left:470px;
+    }
+    #B3C:hover{
+      top: 386px;
+      left: 466px;
+    }
+    .nought{
+      font-size: 9em;
+      text-align:center;
+      background-color: orange;
+    }
+    .ex{
+      font-size: 9em;
+      text-align:center;
+      background-color: turquoise;
+    }
+    .nought:hover{
+      background-color:#f45642;
+    }
+    .ex:hover{
+      background-color:#42f4a7;
+    }
+
+
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="main">
+        <div id="header">Tic Tac Toe</div>
+        <div id="nineByNine">
+          <div id="B1A"class="boxy" onclick="giveClass(this)">
+            <div></div>
+          </div>
+          <div id="B1B" class="boxy" onclick="giveClass(this)">
+          </div>
+          <div id="B1C" class="boxy" onclick="giveClass(this)">
+
+          </div>
+          <div id="B2A" class="boxy" onclick="giveClass(this)">
+          </div>
+          <div id="B2B" class="boxy" onclick="giveClass(this)">
+
+          </div>
+          <div id="B2C" class="boxy" onclick="giveClass(this)">
+
+          </div>
+          <div id="B3A" class="boxy" onclick="giveClass(this)">
+
+          </div>
+          <div id="B3B" class="boxy" onclick="giveClass(this)">
+
+          </div>
+          <div id="B3C" class="boxy" onclick="giveClass(this)">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script>
+
+    var b1a = document.getElementById("B1A");
+    var b1b = document.getElementById("B1B");
+    var b1c = document.getElementById("B1C");
+    var b2a = document.getElementById("B2A");
+    var b2b = document.getElementById("B2B");
+    var b2c = document.getElementById("B2C");
+    var b3a = document.getElementById("B3A");
+    var b3b = document.getElementById("B3B");
+    var b3c = document.getElementById("B3C");
+
+    var turn = 0;
+
+    var xWin = function() {
+      alert("X Wins!");
+    };
+
+    var oWin = function() {
+      alert("O Wins!")
+    }
+
+    var drawWin = function() {
+      alert("It's a draw!")
+    }
+
+    var giveClass = function(e) {
+      if (turn === 0){
+        if (e.innerHTML==="X" || e.innerHTML==="O") {
+          turn = turn;
+        } else {
+          e.innerHTML="X"
+          e.className+=" ex";
+          console.log(turn);
+          turn = 1;
+        }
+      } else if (turn === 1) {
+        if (e.innerHTML==="X" || e.innerHTML==="O") {
+          turn = turn;
+        } else {
+          e.innerHTML="O"
+          e.className+=" nought";
+          console.log(turn);
+          turn = 0;
+        }
+        }
+        if((b1a.className==="boxy ex" && b1b.className==="boxy ex" && b1c.className==="boxy ex") ||
+           (b2a.className==="boxy ex" && b2b.className==="boxy ex" && b2c.className==="boxy ex") ||
+           (b3a.className==="boxy ex" && b3b.className==="boxy ex" && b3c.className==="boxy ex") ||
+           (b1a.className==="boxy ex" && b2a.className==="boxy ex" && b3a.className==="boxy ex") ||
+           (b1b.className==="boxy ex" && b2b.className==="boxy ex" && b3b.className==="boxy ex") ||
+           (b1c.className==="boxy ex" && b2c.className==="boxy ex" && b3c.className==="boxy ex") ||
+           (b1a.className==="boxy ex" && b2b.className==="boxy ex" && b3c.className==="boxy ex") ||
+           (b1c.className==="boxy ex" && b2b.className==="boxy ex" && b3a.className==="boxy ex"))
+        {
+          setTimeout(xWin, 2);
+          window.location.reload();
+        } else if ((b1a.className==="boxy nought" && b1b.className==="boxy nought" && b1c.className==="boxy nought") ||
+           (b2a.className==="boxy nought" && b2b.className==="boxy nought" && b2c.className==="boxy nought") ||
+           (b3a.className==="boxy nought" && b3b.className==="boxy nought" && b3c.className==="boxy nought") ||
+           (b1a.className==="boxy nought" && b2a.className==="boxy nought" && b3a.className==="boxy nought") ||
+           (b1b.className==="boxy nought" && b2b.className==="boxy nought" && b3b.className==="boxy nought") ||
+           (b1c.className==="boxy nought" && b2c.className==="boxy nought" && b3c.className==="boxy nought") ||
+           (b1a.className==="boxy nought" && b2b.className==="boxy nought" && b3c.className==="boxy nought") ||
+           (b1c.className==="boxy nought" && b2b.className==="boxy nought" && b3a.className==="boxy nought")) {
+             setTimeout(oWin, 2);
+             window.location.reload();
+           } else if (b1a.className != "boxy" && b1b.className != "boxy" && b1c.className != "boxy" &&
+                      b2a.className != "boxy" && b2b.className != "boxy" && b2c.className != "boxy" &&
+                      b3a.className != "boxy" && b3b.className != "boxy" && b3c.className != "boxy"){
+             setTimeout(drawWin, 2);
+             window.location.reload();
+           }
+      }
+
+
+
+
+    </script>
+  </body>
+</html>
